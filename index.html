@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucky Choudhary — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div style="display:flex;gap:14px;align-items:center">
+      <div class="logo">LC</div>
+      <div>
+        <h2 style="margin:0" id="studentName">Lucky Choudhary</h2>
+        <div style="color:var(--muted);font-size:14px">Software Engineering Student (3rd Semester)</div>
+      </div>
+    </div>
+
+    <nav>
+      <button onclick="scrollToEl('#about')">About</button>
+      <button onclick="scrollToEl('#skills')">Skills</button>
+      <button onclick="scrollToEl('#projects')">Projects</button>
+      <button onclick="scrollToEl('#education')">Education</button>
+      <button id="themeToggle">🌙</button>
+    </nav>
+
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-mobile" id="mobileNav">
+      <button onclick="scrollToEl('#about'); toggleMobileNav()">About</button>
+      <button onclick="scrollToEl('#skills'); toggleMobileNav()">Skills</button>
+      <button onclick="scrollToEl('#projects'); toggleMobileNav()">Projects</button>
+      <button onclick="scrollToEl('#education'); toggleMobileNav()">Education</button>
+      <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="card hero">
+    <div>
+      <h1>Hello! I'm <span id="introName">Lucky Choudhary</span> 👋</h1>
+      <p style="color:var(--muted)">
+        I'm a 3rd-semester software engineering student learning programming, 
+        web development & logic building.  
+        I enjoy creating projects and improving every day 🚀
+      </p>
+      <div style="margin-top:14px">
+        <a class="primary" href="#projects">View Projects</a>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <div class="avatar" onclick="openModal()">
+        <img src="lucky.professional.jpg" alt="Student Photo">
+      </div>
+      <div style="margin-top:14px">
+        <button class="primary" onclick="copyEmail()">Copy Email</button>
+      </div>
+      <div id="emailText" style="margin-top:10px;color:var(--muted)">contact.luckychoudhary@gmail.com</div>
+
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank">🔗</a>
+        <a href="https://www.youtube.com/@yourchannel" target="_blank">▶️</a>
+        <a href="https://x.com/yourprofile" target="_blank">🐦</a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank">📸</a>
+        <a href="mailto:contact.luckychoudhary@gmail.com">✉️</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE MODAL -->
+  <div class="modal" id="imageModal" onclick="closeModal()">
+    <img src="lucky.professional.jpg" alt="Full Screen Image">
+  </div>
+
+  <!-- ABOUT -->
+  <section class="card" id="about">
+    <h2>About Me</h2>
+    <p style="color:var(--muted)">
+      Hi, I’m Lucky Choudhary — a student who builds more than he talks.
+I turn small ideas into real projects like robotics prototypes and learning platforms.
+I’m not just learning engineering, I’m applying it — many project's at a time.
+If there’s something new to build, I’ll be the first one trying it.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="card" id="skills">
+    <h2>Skills (Learning Phase)</h2>
+    <div class="skills">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>Java</span>
+      <span>Adv Java</span>
+      <span>C,C++ </span>
+      <span>Python</span>
+      <span>Adv-Python</span>
+      <span>DSA</span>
+      <span>DBMS</span>
+      <span>Git Basics</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="card" id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project">
+       <h3>Portfolio Website</h3>
+       <p style="color:var(--muted)">My personal portfolio made using HTML, CSS & JS.</p>
+       <a href="https://yourprojectlink.com" class="project-btn" target="_blank">Visit Website</a>
+      </div>
+
+      <div class="project">
+       <h3>UPSC Website</h3>
+       <p style="color:var(--muted)">Beginner-friendly UPSC study help.</p>
+       <a href="https://luckychoudhary08292.github.io/EduPra_UPSC/" class="project-btn" target="_blank">Visit Website</a>
+      </div>
+
+      <div class="project">
+       <h3>ROBO-Skills </h3>
+       <p style="color:var(--muted)">My beginner-friendly robot builds.</p>
+       <a href="https://luckychoudhary08292.github.io/Robo-Skill-z/" class="project-btn" target="_blank">Visit Website</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="card" id="education">
+    <h2>Education</h2>
+    <p style="color:var(--muted)">
+      <strong>B.Tech — 3rd Semester</strong><br>
+      Sage University Powered By SUNSTONE<br>
+      2024 – Present
+    </p>
+  </section>
+
+  <footer>© <span id="year"></span> Lucky Choudhary — Portfolio</footer>
+
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function scrollToEl(id){
+    document.querySelector(id).scrollIntoView({behavior:'smooth'});
+  }
+
+  // theme toggle
+  const toggleBtn = document.getElementById("themeToggle");
+  toggleBtn.addEventListener("click", toggleTheme);
+
+  function toggleTheme(){
+    const root = document.documentElement;
+    const light = root.getAttribute("data-theme") === "light";
+    if(light){
+      root.removeAttribute("data-theme");
+      toggleBtn.textContent = "🌙";
+    } else {
+      root.setAttribute("data-theme","light");
+      toggleBtn.textContent = "☀️";
+    }
+  }
+
+  // copy email
+  function copyEmail(){
+    const email = document.getElementById("emailText").textContent;
+    navigator.clipboard.writeText(email);
+    alert("Email copied: " + email);
+  }
+
+  // Image modal
+  function openModal(){
+    document.getElementById("imageModal").style.display = "flex";
+  }
+  function closeModal(){
+    document.getElementById("imageModal").style.display = "none";
+  }
+
+  // Mobile nav
+  function toggleMobileNav(){
+    const nav = document.getElementById("mobileNav");
+    nav.style.display = (nav.style.display === "flex") ? "none" : "flex";
+  }
+</script>
+
+</body>
+</html>
